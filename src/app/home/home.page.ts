@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NavController} from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,21 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private nav: NavController, private rota: ActivatedRoute ) {
+
+  }
+
+  formTarefa(){
+    console.log("Cheguei aqui");
+
+    this.nav.navigateForward("form-tarefa");
+
+    console.log("Continuo aqui");
+  }
+
+  formContato(){
+    this.nav.navigateForward("form-contato");
+
+  }
 
 }

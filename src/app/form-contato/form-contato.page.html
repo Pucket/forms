@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>form_contato</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Digite seu nome" [(ngModel)]="nome"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Digite seu e-mail" [(ngModel)]="email"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-input type="text" placeholder="Digite seu telefone" [(ngModel)]="telefone"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="enviarContato()">Enviar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
