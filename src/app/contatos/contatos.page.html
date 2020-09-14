@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>contatos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of contatos">
+    <ion-card-header>
+      <ion-card-title>{{item.nome}}</ion-card-title>
+      <ion-card-subtitle>{{item.email}}</ion-card-subtitle>
+      <ion-card-subtitle>{{item.telefone}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button>Editar</ion-button>
+      <ion-button>Excluir</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

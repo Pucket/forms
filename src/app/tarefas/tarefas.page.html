@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>tarefas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of tarefas">
+    <ion-card-header>
+      <ion-card-title>{{item.nome}}</ion-card-title>
+      <ion-card-subtitle>{{item.descricao}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button>Editar</ion-button>
+      <ion-button>Excluir</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

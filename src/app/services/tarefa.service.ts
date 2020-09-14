@@ -12,4 +12,8 @@ export class TarefaService {
       return this.firestore.collection("tarefa").add(tarefa);
     }
 
+    listar(){
+      return this.firestore.collection("tarefa").snapshotChanges();
+    }
+
 }
