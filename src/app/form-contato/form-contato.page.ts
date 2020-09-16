@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { NavController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 import { ContatoService } from '../services/contato.service';
 
 @Component({
@@ -13,9 +15,18 @@ export class FormContatoPage implements OnInit {
   email: string;
   telefone: string;
 
-  constructor ( private service: ContatoService ) { }
+  id = null;
+  constructor ( private service: ContatoService,
+                private nav: NavController,
+                private rota: ActivatedRoute ) { }
 
   ngOnInit() {
+    this.id = this.rota.snapshot.params['id'];
+    this.nome = this.rota.snapshot.params['nome'];
+    this.email = this.rota.snapshot.params['email'];
+    this.telefone = this.rota.snapshot.params['telefone'];
+
+    console.log(this.id);
   }
 
   enviarContato(){
@@ -29,6 +40,13 @@ export class FormContatoPage implements OnInit {
     contato['email'] = this.email;
     contato['telefone'] = this.telefone;
 
-    this.service.incluir(contato);
+    console.log(contato);
+    if (this.id == null){
+      this.service.incluir(contato);
+    } else {
+      this.service.alterar(contato, this.id);
+    }
+
+    this.nav.navigateForward("contatos");
   }
 }

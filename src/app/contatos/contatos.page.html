@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>contatos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/form-contato">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +17,7 @@
       <ion-card-subtitle>{{item.telefone}}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-      <ion-button>Editar</ion-button>
+      <ion-button (click)="inicioAlteracao(item)">Editar</ion-button>
       <ion-button>Excluir</ion-button>
     </ion-card-content>
   </ion-card>
