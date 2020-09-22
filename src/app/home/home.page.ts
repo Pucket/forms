@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController} from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
+import { AutenticacaoService } from '../services/autenticacao.service';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +10,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HomePage {
 
-  constructor(private nav: NavController, private rota: ActivatedRoute ) {
+  usuario: string;
+  constructor(private nav: NavController,
+              private rota: ActivatedRoute,
+              private service: AutenticacaoService ) {}
 
+  ngOnInit(){
+    this.service.detalhes().subscribe(res => {
+      if (res !== null){
+        this.usuario = res.email;
+      } else {
+        this.nav.navigateBack('');
+      }
+    }, err => {
+      console.log(err);
+    }
+    )
   }
 
   formTarefa(){
@@ -24,6 +39,15 @@ export class HomePage {
   formContato(){
     this.nav.navigateForward("form-contato");
 
+  }
+
+  sair(){
+    this.service.logout().then(res => {
+      console.log(res);
+      this.nav.navigateBack('');
+    } ).catch(error => {
+      console.log(error)
+    })
   }
 
 }

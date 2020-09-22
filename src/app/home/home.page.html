@@ -14,6 +14,18 @@
   </ion-header>
 
   <div id="container">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          Usuário logado: {{usuario}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="sair()">Sair</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <ion-button (click)="formTarefa()">Tarefa</ion-button><br/>
     <ion-button (click)="formContato()">Contato</ion-button>
     
