@@ -23,7 +23,8 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button (click)="enviarTarefa()">Salvar</ion-button>
+        <ion-button (click)="enviarTarefa()"
+        [disabled]="!nome || !descricao">Salvar</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

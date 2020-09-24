@@ -10,26 +10,59 @@
 </ion-header>
 
 <ion-content>
+<form [formGroup]="validacao" (ngSubmit)="enviarContato()">
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-input type="text" placeholder="Digite seu nome" [(ngModel)]="nome"></ion-input>
+        <ion-input type="text" placeholder="Digite seu nome" formControlName="nome"></ion-input>
       </ion-col>
     </ion-row>
+    <div class="validation-errors">
+      <ng-container *ngFor="let m of mensagem_validacao.nome">
+        <div class="error-message" 
+          *ngIf="validacao.get('nome').hasError(m.type) 
+          && (validacao.get('nome').dirty 
+          || validacao.get('nome').touched)">
+          {{m.message}}
+        </div>
+      </ng-container>
+    </div>
     <ion-row>
       <ion-col>
-        <ion-input type="text" placeholder="Digite seu e-mail" [(ngModel)]="email"></ion-input>
+        <ion-input type="text" placeholder="Digite seu e-mail" formControlName="email"></ion-input>
       </ion-col>
     </ion-row>
+    <div class="validation-errors">
+      <ng-container *ngFor="let m of mensagem_validacao.email">
+        <div class="error-message" 
+          *ngIf="validacao.get('email').hasError(m.type) 
+          && (validacao.get('email').dirty 
+          || validacao.get('email').touched)">
+          {{m.message}}
+        </div>
+      </ng-container>
+    </div>
     <ion-row>
       <ion-col>
-        <ion-input type="text" placeholder="Digite seu telefone" [(ngModel)]="telefone"></ion-input>
+        <ion-input type="text" placeholder="Digite seu telefone" formControlName="telefone"></ion-input>
       </ion-col>
     </ion-row>
+    <div class="validation-errors">
+      <ng-container *ngFor="let m of mensagem_validacao.telefone">
+        <div class="error-message" 
+          *ngIf="validacao.get('telefone').hasError(m.type) 
+          && (validacao.get('telefone').dirty 
+          || validacao.get('telefone').touched)">
+          {{m.message}}
+        </div>
+      </ng-container>
+    </div>
     <ion-row>
       <ion-col>
-        <ion-button (click)="enviarContato()">Enviar</ion-button>
+        <ion-button type="submit"
+        [disabled]="!validacao.valid">Enviar</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
+</form>
 </ion-content>
